@@ -41,23 +41,27 @@ This repository contains [Detectron](https://github.com/facebookresearch/maskrcn
 -[VoVNet-57](https://www.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth)
 
 
+### Preparation
+
+
+```bash
+git clone https://github.com/stigma0617/maskrcnn-benchmark-vovnet.git
+cd maskrcnn_benchmark-vovnet
+checkout vovnet
+
+mkdir -p checkpoints/pretrained
+cd checkpoints/pretrained
+wget https://www.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth
+wget https://www.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth
+```
+
 
 ### Installation
 
 Check [INSTALL.md](INSTALL.md) for installation instructions which is orginate from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark)
 
 
-### Preparation
 
-Afeter installation,
-
-```bash
-cd maskrcnn_benchmark-vovnet
-mkdir -p checkpoints/pretrained
-cd checkpoints/pretrained
-wget https://www.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth
-wget https://www.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth
-```
 
 
 ### Training & Inferecne
