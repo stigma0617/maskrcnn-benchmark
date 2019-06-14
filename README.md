@@ -47,7 +47,7 @@ This repository contains [Detectron](https://github.com/facebookresearch/maskrcn
 ```bash
 git clone https://github.com/stigma0617/maskrcnn-benchmark-vovnet.git
 cd maskrcnn_benchmark-vovnet
-checkout vovnet
+git checkout vovnet
 
 mkdir -p checkpoints/pretrained
 cd checkpoints/pretrained
