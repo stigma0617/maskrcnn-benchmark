@@ -7,7 +7,7 @@ from maskrcnn_benchmark.modeling import registry
 from maskrcnn_benchmark.modeling.make_layers import conv_with_kaiming_uniform
 from . import fpn as fpn_module
 from . import resnet
-
+from . import vovnet
 
 @registry.BACKBONES.register("R-50-C4")
 @registry.BACKBONES.register("R-50-C5")
@@ -65,6 +65,31 @@ def build_resnet_fpn_p3p7_backbone(cfg):
             cfg.MODEL.FPN.USE_GN, cfg.MODEL.FPN.USE_RELU
         ),
         top_blocks=fpn_module.LastLevelP6P7(in_channels_p6p7, out_channels),
+    )
+    model = nn.Sequential(OrderedDict([("body", body), ("fpn", fpn)]))
+    model.out_channels = out_channels
+    return model
+
+
+@registry.BACKBONES.register("V-39-FPN")
+@registry.BACKBONES.register("V-57-FPN")
+@registry.BACKBONES.register("V-69-FPN")
+def build_vovnet_fpn_backbone(cfg):
+    body = vovnet.VoVNet(cfg)
+    in_channels_stage = cfg.MODEL.VOVNET.OUT_CHANNELS
+    out_channels = cfg.MODEL.VOVNET.BACKBONE_OUT_CHANNELS
+    fpn = fpn_module.FPN(
+        in_channels_list=[
+            in_channels_stage,
+            in_channels_stage * 2,
+            in_channels_stage * 3,
+            in_channels_stage * 4,
+        ],
+        out_channels=out_channels,
+        conv_block=conv_with_kaiming_uniform(
+            cfg.MODEL.FPN.USE_GN, cfg.MODEL.FPN.USE_RELU
+        ),
+        top_blocks=fpn_module.LastLevelMaxPool(),
     )
     model = nn.Sequential(OrderedDict([("body", body), ("fpn", fpn)]))
     model.out_channels = out_channels
