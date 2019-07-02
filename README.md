@@ -64,8 +64,7 @@ Check [INSTALL.md](INSTALL.md) for installation instructions which is orginate f
 
 
 
-### Training & Inferecne
-
+### Training
 Follow [the instructions](https://github.com/facebookresearch/maskrcnn-benchmark#multi-gpu-training) [maskrcnn-benchmark](https://github.com/facebookresearch) guides
 
 For example,
@@ -74,4 +73,22 @@ For example,
 cd maskrcnn_benchmark-vovnet
 export NGPUS=8
 python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/train_net.py --config-file "configs/vovnet/e2e_faster_rcnn_V_39_FPN_2x.yaml" 
+```
+
+### Evaluation
+
+Follow [the instruction](https://github.com/facebookresearch/maskrcnn-benchmark#evaluation)
+
+For multi-gpu evaluation & test batch size 16,
+
+```bash
+export NGPUS=8
+python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/test_net.py --config-file "configs/vovnet/e2e_faster_rcnn_V_39_FPN_2x.yaml" TEST.IMS_PER_BATCH 16
+```
+
+For single-gpu evaluation & test batch size 1,
+
+```bash
+CUDA_VISIBLE_DEVICES=0
+python tools/test_net.py --config-file "configs/vovnet/e2e_faster_rcnn_V_39_FPN_2x.yaml" TEST.IMS_PER_BATCH 1
 ```
