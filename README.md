@@ -2,7 +2,7 @@
 
 This repository contains [Detectron](https://github.com/facebookresearch/maskrcnn-benchmark) with [VoVNet](https://arxiv.org/abs/1904.09730) (CVPRW'19) Backbone Networks. This code based on pytorch imeplementation of Detectron ([maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark)) 
 
-### Hilights
+### Highlights
 
 - Memory efficient 
 - Better performance, especially for small object
@@ -37,8 +37,8 @@ This repository contains [Detectron](https://github.com/facebookresearch/maskrcn
 
 ### ImageNet pretrained weight
 
--[VoVNet-39](https://www.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth)
--[VoVNet-57](https://www.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth)
+- [VoVNet-39](https://www.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth)
+- [VoVNet-57](https://www.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth)
 
 
 ### Preparation
