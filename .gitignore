@@ -6,7 +6,6 @@ _ext
 maskrcnn_benchmark.egg-info/
 build/
 dist/
-checkpoints/
 
 # pytorch/python/numpy formats
 *.pth
@@ -36,3 +35,4 @@ checkpoints/
 /datasets
 /models
 /output
+/checkpoints
